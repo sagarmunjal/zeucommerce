@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+<head>
+	<title>Open source E-commerce store</title>
+</head>
+<body ng-controller="testcontroller">
+	<h1>Create Your Online Store</h1>
+	<h2 ngModel="storename">{{$store.storename}}</h2>
+	<form name="myForm">
+		<input name="storeName" type="text" ng-model="store.storename" required/>Store Name <br>
+		<div role="alert">
+			<span class="error" ng-show="myForm.storeName.$error.required">REQUIRED!!</span>
+		</div>
+		<input type="text" ng-model="store.email"/>Email <br>
+		<input type="password">Password <br>
+	</form>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+
+	<script>angular.module('myApp',[])
+	.controller('testcontroller',['$scope',function($scope){
+		$scope.store={storename:'My new store',email:'johndoe@example.com'}
+	}])
+	</script>
+</body>
+</html>
+<html>
