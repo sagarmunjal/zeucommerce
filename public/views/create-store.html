@@ -1,0 +1,23 @@
+	<h1>Create Your Online Store</h1>
+	<h2>{{store.storename}}</h2>
+	<form name="myForm">
+	<md-input-container class="md-block">
+		<label>Store Name</label>
+		<input type="text" ng-model="store.storeName" required/>
+	</md-input-container>
+	<md-input-container class="md-block">
+		<label>ManhattanLinenStore.zeu.io</label>
+		<input type="text" ng-model="store.storeUrl" required/>
+	</md-input-container>
+	<md-input-container class="md-block">
+		<label>Email associated with the store</label>
+		<input type="email" name="storeEmail" ng-model="store.storeEmail" required />
+	</md-input-container>
+
+		<!-- Invalid input field error handling -->
+		<!-- <div ng-message="myForm.storeEmail.$error" role="alert">
+			<div ng-message="email">This should have a valid email address </div>
+			<div ng-message="required">Please enter a value for this field </div>
+		</div> -->
+	</form>
+	<md-button class="md-raised md-primary" ng-click="createStore()">Create Store</md-button>

@@ -1,16 +1,29 @@
-var express = require('express')
+var express = require('express'),
+	mongoose = require('./mongoose.js'),
+	bodyParser = require('body-parser')
+
+
+// Initializing DB
+
+mongoose.loadModels();
+mongoose.connect();
 
 var app = express()
-app.get('/',function(req,res){
-	res.send("i have learnt to make an express server, all what you are seeing i have made on my own, go to '/createstore' to see the form")
-})
+app.use(bodyParser.json())
+
+//Serving public folder
+
+app.use('/public',express.static('./public'))
 
 app.engine('html',require('ejs').renderFile)
-app.set('views',__dirname+'/views')
+app.set('views',__dirname+'/public/views')
 app.set('view engine','html')
 
-app.get('/createstore',function(req,res){
-	res.render('createstore.html');
+require('./routes/main.js')(app);
+
+app.get('/*',function(req,res){
+	res.render('index.html');
 })
+
 
 app.listen(8080)
